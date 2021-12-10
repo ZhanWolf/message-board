@@ -11,17 +11,4 @@ message表：id主键用于标识message
                      评论必须大于五位
             /message/nonamemsg&&/message/nonamecom 匿名留言和匿名评论：留言时fromuser会被赋值为noname，但truename仍会记录留言者信息，用于修改和删除评论
             /message/like 点赞：输入评论id以增加点赞数
-            显示时间
-
-
-ms.POST("/sendmsg", api.Messagepost) touser：发送给谁 message：
-		ms.POST("/sendcom", api.Commentpost)
-		ms.GET("/listmsg", api.Listmsg)
-		ms.POST("/listcom", api.Liscon)
-		ms.POST("/delete", api.Deletemsg)
-		ms.POST("/update", api.Updatemsg)
-		ms.GET("/mymsg", api.Listmymsg)
-		ms.POST("/nonamemsg", api.Nonamemsg)
-		ms.POST("/nonamecom", api.Nonamecom)
-		ms.POST("/likes", api.Likes)           
-           
+            /user/clock 显示时间
