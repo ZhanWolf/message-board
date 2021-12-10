@@ -63,7 +63,7 @@ func Updatemsg(c *gin.Context) {
 	message := c.PostForm("message")
 	username, _ := c.Cookie("now_user_login")
 	id2, _ := strconv.Atoi(id)
-	if dao.Checkueser(id2) != username {
+	if dao.Checkueser(id2) != username && dao.Checktruename(id2) != username {
 		c.JSON(http.StatusOK, "这不是您的评论")
 		return
 	}
