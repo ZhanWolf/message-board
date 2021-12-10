@@ -11,8 +11,8 @@ import (
 )
 
 func Messagepost(c *gin.Context) {
-	touser := c.PostForm("touser")   //发送给谁
-	message := c.PostForm("message") //评论的内容
+	touser := c.PostForm("touser")
+	message := c.PostForm("message")
 	fromuser, _ := c.Cookie("now_user_login")
 
 	err := service.Checkuseraliveser(touser)
@@ -35,8 +35,8 @@ func Messagepost(c *gin.Context) {
 }
 
 func Commentpost(c *gin.Context) {
-	id := c.PostForm("id")           //母message的id
-	message := c.PostForm("message") //评论的内容
+	id := c.PostForm("id")
+	message := c.PostForm("message")
 	fromuser, _ := c.Cookie("now_user_login")
 	id2, _ := strconv.Atoi(id)
 	fmt.Println(id2)
@@ -59,8 +59,8 @@ func Commentpost(c *gin.Context) {
 }
 
 func Updatemsg(c *gin.Context) {
-	id := c.PostForm("id")           //修改message的id
-	message := c.PostForm("message") //修改后的内容
+	id := c.PostForm("id")
+	message := c.PostForm("message")
 	username, _ := c.Cookie("now_user_login")
 	id2, _ := strconv.Atoi(id)
 	if dao.Checkueser(id2) != username && dao.Checktruename(id2) != username {
@@ -76,7 +76,7 @@ func Updatemsg(c *gin.Context) {
 }
 
 func Deletemsg(c *gin.Context) {
-	id := c.PostForm("id") //删除评论的id
+	id := c.PostForm("id")
 	username, _ := c.Cookie("now_user_login")
 	id2, _ := strconv.Atoi(id)
 	if dao.Checkueser(id2) != username && dao.Checktruename(id2) != username {
@@ -93,7 +93,7 @@ func Listmsg(c *gin.Context) {
 }
 
 func Liscon(c *gin.Context) {
-	id := c.PostForm("id") //显示那个message下面的评论
+	id := c.PostForm("id")
 	id2, _ := strconv.Atoi(id)
 	service.Listcon(c, id2)
 }
@@ -103,8 +103,8 @@ func Listmymsg(c *gin.Context) {
 }
 
 func Nonamemsg(c *gin.Context) {
-	touser := c.PostForm("touser")   //发送给谁
-	message := c.PostForm("message") //message的内容
+	touser := c.PostForm("touser")
+	message := c.PostForm("message")
 	fromuser := "noname"
 	truename, _ := c.Cookie("now_user_login")
 
@@ -129,8 +129,8 @@ func Nonamemsg(c *gin.Context) {
 }
 
 func Nonamecom(c *gin.Context) {
-	id := c.PostForm("id")           //为哪条id品论
-	message := c.PostForm("message") //message的内容
+	id := c.PostForm("id")
+	message := c.PostForm("message")
 	fromuser := "noname"
 	truename, _ := c.Cookie("now_user_login")
 	id2, _ := strconv.Atoi(id)
@@ -154,7 +154,7 @@ func Nonamecom(c *gin.Context) {
 }
 
 func Likes(c *gin.Context) {
-	id := c.PostForm("id") //为哪条评论点赞
+	id := c.PostForm("id")
 	id2, _ := strconv.Atoi(id)
 	if dao.Querypid(id2) == false {
 		c.JSON(http.StatusOK, "没有这条评论")
